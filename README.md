@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Credex AI Spend Audit
 
-## Getting Started
+A free web application that acts as a "Mint for AI tool spend." It allows users to input their current AI subscriptions and usage, instantly calculates potential savings, and generates personalized recommendations to cut costs by downgrading plans, switching tools, or utilizing Credex infrastructure credits.
 
-First, run the development server:
+## Screenshots
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*(Place screenshots here)*
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quick Start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Initialize the database:
+   ```bash
+   npx prisma db push
+   npx prisma generate
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Run tests:
+   ```bash
+   npm run test
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Decisions & Trade-offs
+1. **SQLite over Postgres**: Chose SQLite for the MVP to ensure the project runs locally immediately without requiring external database provisioning.
+2. **Hardcoded Math Engine**: Intentionally avoided using an LLM for the core savings calculation because deterministic math is faster, cheaper, and less error-prone for financial audits.
+3. **Next.js App Router**: Selected for its built-in API routes and server components, allowing the entire application (frontend + API + database client) to live in a single repository.
+4. **Mocked AI Summary initially**: While the prompt for Anthropic is ready, I mocked the immediate return in the API to prevent API key issues from blocking the local test flow. 
+5. **No Auth/Login**: Kept the tool completely unauthenticated to minimize friction and maximize the virality of the Open Graph link sharing.
