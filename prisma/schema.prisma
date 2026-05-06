@@ -1,0 +1,31 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Audit {
+  id              String   @id @default(uuid())
+  createdAt       DateTime @default(now())
+  
+  // Input Data
+  teamSize        Int
+  primaryUseCase  String
+  tools           String   // JSON string of UserTool[]
+  
+  // Results
+  totalSavings    Float
+  annualSavings   Float
+  recommendations String   // JSON string of Recommendation[]
+  
+  // Lead Capture
+  email           String?
+  companyName     String?
+  role            String?
+  
+  // AI Summary
+  summary         String?
+}
