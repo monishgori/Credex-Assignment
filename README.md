@@ -1,4 +1,4 @@
-# Credex AI Spend Audit
+# AI Subscription Tally
 
 A free web application that acts as a "Mint for AI tool spend." It allows users to input their current AI subscriptions and usage, instantly calculates potential savings, and generates personalized recommendations to cut costs by downgrading plans, switching tools, or utilizing Credex infrastructure credits.
 
